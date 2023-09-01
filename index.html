@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recettes Étudiantes</title>
+    <style>
+        /* Exemple de styles pour les recettes avec des couleurs */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #7FD1B9;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .recette {
+            background-color: #FFFFFF;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .recette h2 {
+            color: #333333;
+        }
+
+        .recette img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .recette-duree {
+            font-style: italic;
+            color: #888;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Ajout de styles pour les liens de tri */
+        .tri-liens {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .tri-liens button {
+            margin: 10px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .tri-liens button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Recettes Étudiantes</h1>
+    </header>
+
+    <!-- Liens de tri -->
+    <div class="tri-liens">
+        <button onclick="triParDuree()">Trier par durée</button>
+        <button onclick="triAlphabetique()">Trier par ordre alphabétique</button>
+        <button onclick="triAlphabetiqueInverse()">Trier par ordre alphabétique inverse</button>
+    </div>
+
+    <main>
+        <!-- Recette 1 -->
+        <div class="recette">
+            <a href="bolognaises.html">
+            <h2>Pâtes Bolognaise</h2>
+            </a>
+            <img src="bolo.jpg" alt="Pâtes Bolognaise">
+            <p class="recette-duree">Durée moyenne : 30 minutes</p>
+        </div>
+
+        <!-- Recette 2 -->
+        <div class="recette">
+            <a href="pates_thon.html">
+            <h2>Pâtes au thon</h2>
+            </a>
+            <img src="pates thon.jpg" alt="Pâtes au thon">
+            <p class="recette-duree">Durée moyenne : 40 minutes</p>
+        </div>
+
+        <!-- Recette 3 -->
+        <div class="recette">
+            <a href="pates_carbo.html">
+            <h2>Pâtes Carbonara</h2>
+            </a>
+            <img src="carbo.jpg" alt="Pâtes Carbonara">
+            <p class="recette-duree">Durée moyenne : 25 minutes</p>
+        </div>
+
+        <!-- Recette 4 -->
+        <div class="recette">
+            <a href="pain_perdu.html">
+            <h2>Pain Perdu</h2>
+            </a>
+            <img src="pain-perdu.jpg" alt="Pain Perdu">
+            <p class="recette-duree">Durée moyenne : 20 minutes</p>
+        </div>
+
+        <!-- Recette 6 -->
+        <div class="recette">
+            <a href="pancakes.html">
+            <h2>Pancakes</h2>
+            </a>
+            <img src="panckake.jpg" alt="Pancakes">
+            <p class="recette-duree">Durée moyenne : 25 minutes</p>
+        </div>
+
+        <!-- Recette 7 -->
+        <div class="recette">
+            <a href="salade_cesar.html">
+            <h2>Salade César</h2>
+            </a>
+            <img src="cesar.jpg" alt="Salade César">
+            <p class="recette-duree">Durée moyenne : 15 minutes</p>
+        </div>
+
+        <!-- Recette 9 -->
+        <div class="recette">
+            <a href="spag.html">
+            <h2>Spaghetti Aglio e Olio</h2>
+            </a>
+            <img src="spag-aglio.jpg" alt="Spaghetti Aglio e Olio">
+            <p class="recette-duree">Durée moyenne : 20 minutes</p>
+        </div>
+
+        <!-- Recette 11 -->
+        <div class="recette">
+            <a href="crepes.html">
+            <h2>Crêpes Classiques</h2>
+            </a>
+            <img src="crepes.jpg" alt="Crêpes Classiques">
+            <p class="recette-duree">Durée moyenne : 30 minutes</p>
+        </div>
+
+        <!-- Recette 12 -->
+        <div class="recette">
+            <a href="croque.html">
+            <h2>Croque-Monsieur</h2>
+            </a>
+            <img src="croque.jpg" alt="Croque-Monsieur">
+            <p class="recette-duree">Durée moyenne : 25 minutes</p>
+        </div>
+        
+        <!-- Ajoutez plus de recettes ici -->
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Recettes Délicieuses</p>
+    </footer>
+
+    <script>
+        function triParDuree() {
+            // Récupérez toutes les recettes dans un tableau
+            const recettes = Array.from(document.querySelectorAll('.recette'));
+
+            // Triez les recettes par durée (ou tout autre critère)
+            recettes.sort((a, b) => {
+                const dureeA = a.querySelector('.recette-duree').textContent.split(':')[1].trim();
+                const dureeB = b.querySelector('.recette-duree').textContent.split(':')[1].trim();
+
+                return parseInt(dureeA) - parseInt(dureeB);
+            });
+
+            // Effacez le contenu actuel du conteneur des recettes
+            const recettesContainer = document.querySelector('main');
+            recettesContainer.innerHTML = '';
+
+            // Ajoutez les recettes triées au conteneur
+            recettes.forEach(recette => {
+                recettesContainer.appendChild(recette);
+            });
+        }
+
+        function triAlphabetique() {
+            // Récupérez toutes les recettes dans un tableau
+            const recettes = Array.from(document.querySelectorAll('.recette'));
+
+            // Triez les recettes par ordre alphabétique du titre
+            recettes.sort((a, b) => {
+                const titreA = a.querySelector('h2').textContent.toLowerCase();
+                const titreB = b.querySelector('h2').textContent.toLowerCase();
+
+                return titreA.localeCompare(titreB);
+            });
+
+            // Effacez le contenu actuel du conteneur des recettes
+            const recettesContainer = document.querySelector('main');
+            recettesContainer.innerHTML = '';
+
+            // Ajoutez les recettes triées au conteneur
+            recettes.forEach(recette => {
+                recettesContainer.appendChild(recette);
+            });
+        }
+
+        function triAlphabetiqueInverse() {
+            // Récupérez toutes les recettes dans un tableau
+            const recettes = Array.from(document.querySelectorAll('.recette'));
+
+            // Triez les recettes par ordre alphabétique inverse du titre
+            recettes.sort((a, b) => {
+                const titreA = a.querySelector('h2').textContent.toLowerCase();
+                const titreB = b.querySelector('h2').textContent.toLowerCase();
+
+                return titreB.localeCompare(titreA);
+            });
+
+            // Effacez le contenu actuel du conteneur des recettes
+            const recettesContainer = document.querySelector('main');
+            recettesContainer.innerHTML = '';
+
+            // Ajoutez les recettes triées au conteneur
+            recettes.forEach(recette => {
+                recettesContainer.appendChild(recette);
+            });
+        }
+    </script>
+</body>
+</html>
